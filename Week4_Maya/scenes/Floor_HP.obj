@@ -1,0 +1,16 @@
+# This file uses centimeters as units for non-parametric coordinates.
+
+mtllib Floor_HP.mtl
+g default
+v 0.002354 -0.026593 -0.013114
+v 3.002354 -0.026593 -0.013114
+v 0.002354 -0.026593 -3.013114
+v 3.002354 -0.026593 -3.013114
+vn 0.000000 1.000000 0.000000
+vn 0.000000 1.000000 0.000000
+vn 0.000000 1.000000 0.000000
+vn 0.000000 1.000000 0.000000
+s off
+g Floor
+usemtl initialShadingGroup
+f 1//1 2//2 4//3 3//4

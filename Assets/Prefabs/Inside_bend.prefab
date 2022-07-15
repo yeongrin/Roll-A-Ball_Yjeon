@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5198210510189338831}
   - component: {fileID: 5576015927130857552}
   - component: {fileID: 149813520536548525}
+  - component: {fileID: -7148830571869813276}
   m_Layer: 0
   m_Name: Inside_bend
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-7148830571869813276
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4591795158582568463}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.995611, y: 1.0015, z: 2.996346}
+  m_Center: {x: -1.4978055, y: 0.50075, z: -1.498173}

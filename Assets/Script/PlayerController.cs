@@ -6,29 +6,46 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
-    Rigidbody rb;
-    public float speed = 1.0f;  
-    public int pickupCount;
+    private Rigidbody rb;
+    public float speed = 1.0f;
+    private int count;
+    private int pickupCount; //The number of pickups in out scene
+    //Controllers
+    SoundController soundController;
+    GameObject resetPoint;
+    bool resetting = false;
+    Color originalColour;
     int totalPickups;
     private bool wonGame = false;
-    [Header("UI")]
+    [Header("UI Stuff")]
+    public GameObject gameOverScreen;
+    public TMP_Text countText;
     public TMP_Text scoreText;
-    public TMP_Text winText;
+    public TMP_Text WinText;
+    public TMP_Text WinText2;
     public GameObject inGamePanel;
     public GameObject winPanel;
     public Image pickupFill;
     float pickupChunk;
-    
+
     void Start()
     {
+        //Get the rigidbody component attached to this game object
+        rb = GetComponent<Rigidbody>();
+        count = 0;
+        pickupCount = GameObject.FindGameObjectsWithTag("Pickup").Length;
+        gameOverScreen.SetActive(false); //Turn off out game over screen at start of game
+        SetCountText();
+        WinText.text = "";
+        WinText2.text = "";
+        soundController = FindObjectOfType<SoundController>();
+        resetPoint = GameObject.Find("Reset Point");
+        originalColour = GetComponent<Renderer>().material.color;
         //Turn off our win panel object
         winPanel.SetActive(false);
         //Turn on our in game panel
         inGamePanel.SetActive(true);
-        //Get the rigidbody component attached to this game object
-        rb = GetComponent<Rigidbody>();
         //Work out how many pickups are in the scene and store in (pickupCount)
-        pickupCount = GameObject.FindGameObjectsWithTag("Pickup").Length;
         // Assign the amount of pickups to the total pickups
         totalPickups = pickupCount;
         //Work out the amount of fill for our pickup fill
@@ -37,12 +54,11 @@ public class PlayerController : MonoBehaviour
         //Desplay the pickups to the user
         CheckPickups();
     }
-
+    
     void FixedUpdate()
-    {
-        //If we have won the game, return from the fuction
-        if (wonGame)
-            return;
+    { //If we have won the game, return from the fuction
+       if (resetting)
+           return;
 
             //Store the horizontal axis value in a float
             float moveHorizontal = Input.GetAxis("Horizontal");
@@ -56,21 +72,61 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(movement * speed);
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         //if we collide with a pickup, destroy the pickup
-        if (other.gameObject.CompareTag("Pickup"))
+        if(other.gameObject.CompareTag("Pickup"))
         {
+            other.GetComponent<Particles>().CreateParticles();
+            other.gameObject.SetActive(false);
+            count = count + 1;
+            SetCountText();
+            soundController.PlayPickupSound();
             //Decrenebt the pickupCount when we collide with a pickup
             pickupCount -= 1;
             //Desplay the pickups to the user
             pickupFill.fillAmount = pickupFill.fillAmount + pickupChunk;
-            CheckPickups();
+            CheckPickups();   
 
             Destroy(other.gameObject);
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            soundController.PlayCollisionSound(collision.gameObject);
+        }
+    }
+    
+    private void OncollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Respawn"))
+        {
+            StartCoroutine(ResetPlayer());
+        }
+    }
+
+    public IEnumerator ResetPlayer()
+    {
+        resetting = true;
+        GetComponent<Renderer>().material.color = Color.black;
+        rb.velocity = Vector3.zero;
+        Vector3 startPos = transform.position;
+        float resetSpeed = 2f;
+        var i = 0.0f;
+        var rate = 1.0f / resetSpeed;
+        while (i < 1.0f)
+        {
+            i += Time.deltaTime * rate;
+            transform.position = Vector3.Lerp(startPos, resetPoint.transform.position, i);
+            yield return null;
+        }
+        GetComponent<Renderer>().material.color = originalColour;
+        resetting = false;
+    }
+    
     void CheckPickups()
     {
         //Display the new pickup count to the player
@@ -92,6 +148,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void SetCountText()
+    {
+        countText.text = "Count: " + count.ToString();
+        if(count >= pickupCount)
+        { 
+            void WinGame()
+            {
+                gameOverScreen.SetActive(true); //Turns on out Game Over Screen
+                WinText.text = "You Win!";
+                WinText2.text = "Snack time is OVER!";
+                soundController.PlayWinSound();
+            }
+        }
+    }
+    
     //Temporary reset funtionality
     public void ResetGame()
     {

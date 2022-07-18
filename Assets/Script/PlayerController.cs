@@ -156,7 +156,7 @@ public class PlayerController : MonoBehaviour
             void WinGame()
             {
                 gameOverScreen.SetActive(true); //Turns on out Game Over Screen
-                WinText.text = "You Win!";
+                WinText.text = "Game is Done!";
                 WinText2.text = "Snack time is OVER!";
                 soundController.PlayWinSound();
             }

@@ -799,7 +799,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SUGAR CRUSH!
+  m_text: Title undecided
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d02accbe2b6a53145917bd7369c5abaa, type: 2}
   m_sharedMaterial: {fileID: -7131107694511795057, guid: d02accbe2b6a53145917bd7369c5abaa, type: 2}
@@ -1229,7 +1229,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Level 2
+  m_text: 'Level 2 (fix)
 
 '
   m_isRightToLeft: 0

@@ -2028,6 +2028,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7997877266914144146, guid: 1ea6cab89b3711f468577ddb7611f603, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.2736
+      objectReference: {fileID: 0}
+    - target: {fileID: 7997877266914144146, guid: 1ea6cab89b3711f468577ddb7611f603, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7997877266914144146, guid: 1ea6cab89b3711f468577ddb7611f603, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.00013881885
+      objectReference: {fileID: 0}
+    - target: {fileID: 7997877266914144146, guid: 1ea6cab89b3711f468577ddb7611f603, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.500257
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ea6cab89b3711f468577ddb7611f603, type: 3}
 --- !u!4 &210426169 stripped
@@ -11312,14 +11328,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.3191354, y: -0, z: -0, w: 0.94770914}
-  m_LocalPosition: {x: 0, y: 6, z: -50}
+  m_LocalRotation: {x: 0.31280127, y: -0, z: -0, w: 0.9498186}
+  m_LocalPosition: {x: 0, y: 13, z: -56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 37.221, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 36.456, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11340,7 +11356,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b932ca927bfd5d54d95fe4bbab60244e, type: 3}
@@ -13020,11 +13036,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: d8da70473eefad74280c3c36850f14cd, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 0.477
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0

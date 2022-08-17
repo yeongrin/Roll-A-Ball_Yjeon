@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2541116144803965364}
   - component: {fileID: 2541116144803965367}
   m_Layer: 0
-  m_Name: Pickup (18)
+  m_Name: Pickup2
   m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +45,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3723981887775464005}
-  m_Mesh: {fileID: 5302568919011541938, guid: 2bf5c7674495d864c87c988d91287d52, type: 3}
+  m_Mesh: {fileID: -1586851177704321581, guid: 2bf5c7674495d864c87c988d91287d52, type: 3}
 --- !u!23 &3123985988238234628
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -100,7 +100,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.0000001, y: 1.0000002, z: 1.0000004}
-  m_Center: {x: 0.3054828, y: 0.50000006, z: -0.000000029802322}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2541116144803965362
 MonoBehaviour:
   m_ObjectHideFlags: 0

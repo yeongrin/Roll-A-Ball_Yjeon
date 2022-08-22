@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     public GameObject inGamePanel;
     public GameObject winPanel;
     public Image pickupFill;
+    public int JumpPower;
+    public int MoveSpeed;
     float pickupChunk;
 
     void Start()
@@ -54,6 +56,11 @@ public class PlayerController : MonoBehaviour
         //Desplay the pickups to the user
         CheckPickups();
     }
+
+    void Update()
+    {
+        Jump();
+    }
     
     void FixedUpdate()
     { //If we have won the game, return from the fuction
@@ -70,6 +77,14 @@ public class PlayerController : MonoBehaviour
 
             //Add force to out rigidbody from our movement vector time our speed 
             rb.AddForce(movement * speed);
+    }
+
+    void Jump()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.AddForce(Vector3.up * JumpPower, ForceMode.Impulse);
+        }
     }
 
     void OnTriggerEnter(Collider other)

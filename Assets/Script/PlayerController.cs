@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     public int JumpPower;
     public int MoveSpeed;
     float pickupChunk;
+    bool grounded = true;
 
     void Start()
     {
@@ -67,7 +68,9 @@ public class PlayerController : MonoBehaviour
        if (resetting)
            return;
 
-            //Store the horizontal axis value in a float
+       if (grounded)
+        {
+        //Store the horizontal axis value in a float
             float moveHorizontal = Input.GetAxis("Horizontal");
             //Store the vertical axis value in a float
             float moveVertical = Input.GetAxis("Vertical");
@@ -77,6 +80,7 @@ public class PlayerController : MonoBehaviour
 
             //Add force to out rigidbody from our movement vector time our speed 
             rb.AddForce(movement * speed);
+        }
     }
 
     void Jump()
@@ -119,6 +123,19 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(ResetPlayer());
         }
     }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.collider.CompareTag("Ground"))
+            grounded = true;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.CompareTag("Ground"))
+            grounded = false;
+    }
+
 
     public IEnumerator ResetPlayer()
     {

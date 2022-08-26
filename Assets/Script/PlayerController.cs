@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private int pickupCount; //The number of pickups in out scene
     //Controllers
     SoundController soundController;
+    GameController gameController;
     GameObject resetPoint;
     bool resetting = false;
     Color originalColour;
@@ -43,6 +44,7 @@ public class PlayerController : MonoBehaviour
         WinText2.text = "";
         soundController = FindObjectOfType<SoundController>();
         resetPoint = GameObject.Find("Reset Point");
+        gameController = FindObjectOfType<GameController>();
         originalColour = GetComponent<Renderer>().material.color;
         //Turn off our win panel object
         winPanel.SetActive(false);
@@ -67,6 +69,9 @@ public class PlayerController : MonoBehaviour
     { //If we have won the game, return from the fuction
        if (resetting)
            return;
+
+       if (gameController.controlType == ControlType.WorldTilt)
+            return;
 
        if (grounded)
         {
